@@ -113,17 +113,26 @@ function returnArgumentsArray() {
    console.log(newSum()) выведет 6
  */
 
-function bindFunction(fn) {
-    var arr = [].slice.call(arguments);
+// function bindFunction(fn) {
+//     var arr = [].slice.call(arguments);
+//
+//     arr = arr.slice (1);
+//
+//     return function() {
+//         return fn.apply(this, arr);
+//     }
+//
+// }
 
-    arr = arr.slice (1);
-
+function bindFunction(fn, ...args) {
     return function() {
-        return fn.apply(this, arr);
+        return args.reduce(function fn(a, b) {
+            return a + b;
+        });
     }
-
 }
-bindFunction(sumWithDefaults, 30, 40);
+
+bindFunction(sumWithDefaults, 30, 40, 70);
 
 export {
     returnFirstArgument,
