@@ -113,11 +113,23 @@ function returnArgumentsArray() {
    console.log(newSum()) выведет 6
  */
 
+function bindFunction(fn) {
+    var arr = [].slice.call(arguments);
+
+    arr = arr.slice (1);
+
+    return function() {
+        return fn.apply(this, arr);
+    }
+
+}
+bindFunction(sumWithDefaults, 30, 40);
+
 export {
     returnFirstArgument,
     sumWithDefaults,
     returnArgumentsArray,
     returnFnResult,
     returnCounter,
-    // bindFunction
+    bindFunction
 }
