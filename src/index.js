@@ -124,15 +124,19 @@ function returnArgumentsArray() {
 //
 // }
 
+// function bindFunction(fn, ...args) {
+//     return function() {
+//         return args.reduce(function fn(a, b) {
+//             return a + b;
+//         });
+//     }
+// }
+
 function bindFunction(fn, ...args) {
     return function() {
-        return args.reduce(function fn(a, b) {
-            return a + b;
-        });
+        return fn.apply(this, args);
     }
 }
-
-bindFunction(sumWithDefaults, 30, 40, 70);
 
 export {
     returnFirstArgument,
