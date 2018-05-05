@@ -57,26 +57,10 @@ function reduce(array, fn, initial) {
  Пример:
    upperProps({ name: 'Сергей', lastName: 'Петров' }) вернет ['NAME', 'LASTNAME']
  */
+
 function upperProps(obj) {
-    var names = Object.getOwnPropertyNames(obj),
-        newNames = map(names, function (name) {
-            return name.toUpperCase();
-        });
-
-    return newNames;
+    return Array.from(Object.keys(obj), key=>key.toUpperCase());
 }
-
-/* другой вариант
-function upperProps(obj) {
-    var newNames = [];
-
-    for(let prop in obj){
-        newNames.push(prop.toUpperCase());
-    }
-
-    return newNames;
-}
-*/
 
 /*
  Задание 5 *:
